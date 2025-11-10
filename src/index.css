@@ -1,23 +1,42 @@
 @import 'tailwindcss';
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* === COLOR SYSTEM === */
+    --color-bg-base: #ffffff; /* overall background */
+    --color-bg-hero: #eaf3fd; /* hero and top banners */
+    --color-bg-menu: #eafae5; /* menu selection */
+    --color-bg-section: #ebfce6; /* sections */
+    --color-bg-footer: #000000; /* footer */
+    --color-accent: #031e3c; /* CTA, buttons, links */
+      --color-accent-hover: #052b5f; /* hover state - darker */
+    --color-accent-focus: #02162f; /* focus/active - deepest shade */
+  }
+
+
+  @theme {
+    --color-base: var(--color-bg-base);
+    --color-hero: var(--color-bg-hero);
+    --color-menu: var(--color-bg-menu);
+    --color-section: var(--color-bg-section);
+    --color-footer: var(--color-bg-footer);
+    --color-accent: var(--color-accent);
+    --color-accent-hover: var(--color-accent-hover);
+    --color-accent-focus: var(--color-accent-focus);
+
+    /* Marquee animation */
+    --animate-marquee: marquee 25s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
   }
 }
+
