@@ -33,7 +33,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className='bg-footer text-white'>
+    <footer className='bg-footer text-white font-nunito'>
       <div className='mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-12 md:py-16 '>
         {/* Top Section*/}
         <div className='flex flex-col lg:flex-row gap-12 lg:gap-20 mb-12 '>

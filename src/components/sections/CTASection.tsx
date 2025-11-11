@@ -3,7 +3,7 @@ import ctaImage from '../../assets/ctaBannerSection/laughing-guy.svg';
 
 export const CTASection = () => {
   return (
-    <section className='w-full flex justify-center py-16 md:py-20 md:mt-30 px-5 lg:px-0'>
+    <section className='w-full font-nunito flex justify-center py-16 md:py-20 md:mt-30 px-5 lg:px-0'>
       <div className='bg-linear-to-br from-accent via-accent to-[#34f31b] lg:w-7xl rounded-4xl pt-10  lg:relative lg:h-[300px] lg:pb-100 '>
         <div className='max-w-[1400px] px-4 sm:px-6 lg:px-8'>
           <div className='flex flex-col lg:flex-row items-center gap-8 lg:gap-12'>

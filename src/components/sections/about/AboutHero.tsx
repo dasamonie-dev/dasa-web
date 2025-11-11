@@ -3,7 +3,7 @@ import globe from '../../../assets/aboutPage/global-network-connection-backgroun
 
 export const AboutHero = () => {
   return (
-    <section className='bg-footer text-base  relative'>
+    <section className='bg-footer text-base font-nunito relative'>
       <div className='mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24'>
         <div className='flex flex-col lg:flex-row items-start lg:items-center gap-12 lg:gap-20'>
           {/* Left content */}

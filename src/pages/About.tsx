@@ -6,7 +6,7 @@ import { CTASection } from '../components/sections/CTASection';
 
 export const About = () => {
   return (
-    <div className='w-full min-h-screen bg-base'>
+    <div className='w-full min-h-screen bg-base font-nunito'>
       <AboutHero />
       <Mission />
       <Purpose />
