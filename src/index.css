@@ -1,5 +1,4 @@
-@import 'tailwindcss';
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rhodium+Libre&display=swap");
 @import "tailwindcss";
 
 @layer base {
@@ -11,10 +10,9 @@
     --color-bg-section: #ebfce6; /* sections */
     --color-bg-footer: #000000; /* footer */
     --color-accent: #031e3c; /* CTA, buttons, links */
-      --color-accent-hover: #052b5f; /* hover state - darker */
+    --color-accent-hover: #052b5f; /* hover state - darker */
     --color-accent-focus: #02162f; /* focus/active - deepest shade */
   }
-
 
   @theme {
     --color-base: var(--color-bg-base);
@@ -28,6 +26,9 @@
 
     /* Marquee animation */
     --animate-marquee: marquee 25s linear infinite;
+
+    /* font */
+    --font-nunito: "Nunito", sans-serif;
   }
 
   @keyframes marquee {
@@ -39,4 +40,3 @@
     }
   }
 }
-

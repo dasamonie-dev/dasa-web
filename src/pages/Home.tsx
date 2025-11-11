@@ -5,11 +5,11 @@ import { CTASection } from '../components/sections/CTASection';
 
 export const Home = () => {
   return (
-    <>
+    <div className='w-full font-nunito'>
       <Hero />
       <Features />
       <WhyChoose />
       <CTASection />
-    </>
+    </div>
   );
 };
