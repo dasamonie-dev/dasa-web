@@ -19,7 +19,7 @@ export const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <nav className='w-full bg-base border-b border-gray-200'>
+    <nav className='w-full bg-base border-b border-gray-200 font-nunito'>
       <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]'>
         <div className='flex items-center justify-between h-16 md:h-20'>
           {/* Logo */}

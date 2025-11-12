@@ -35,7 +35,7 @@ export const WhyChoose = () => {
   ];
 
   return (
-    <section className='bg-section py-12 md:py-16 lg:py-20'>
+    <section className='bg-section py-12 md:py-16 lg:py-20 font-nunito'>
       <div className='mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
         <div className='text-center mb-10 md:mb-14'>

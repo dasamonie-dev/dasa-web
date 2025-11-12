@@ -74,7 +74,7 @@ export const Features = () => {
   }, []);
 
   return (
-    <section className='bg-base py-12 md:py-16 lg:py-20'>
+    <section className='bg-base py-12 md:py-16 lg:py-20 font-nunito'>
       <div className='mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
         <div className='text-center mb-8 md:mb-10'>

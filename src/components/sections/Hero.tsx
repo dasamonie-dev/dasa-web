@@ -12,7 +12,7 @@ import checkmark from '../../assets/heroBannerSection/checkmark.svg';
 
 export const Hero = () => {
   return (
-    <section className='bg-hero'>
+    <section className='bg-hero font-nunito'>
       <div className='mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8'>
         {/* Centered textual content */}
         <div className='flex flex-col items-center text-center py-10 lg:py-16'>
