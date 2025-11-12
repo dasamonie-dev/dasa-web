@@ -10,7 +10,7 @@ export const About = () => {
       <AboutHero />
       <Mission />
       <Purpose />
-      <LeadershipTeam />
+      
       <CTASection />
     </div>
   );
