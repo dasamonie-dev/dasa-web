@@ -37,7 +37,7 @@ export const Hero = () => {
             <img
               src={user1}
               alt='Smiling man with phone'
-              className='lg:h-100 h-48 w-full shadow-md hidden lg:block'
+              className='lg:h-100 h-48 w-full shadow-md hidden md:block'
             />
             <img
               src={user2}
@@ -52,7 +52,7 @@ export const Hero = () => {
             <img
               src={user4}
               alt='Business man with phone'
-              className='lg:h-100 h-48 w-full  shadow-md hidden lg:block'
+              className='lg:h-100 h-48 w-full  shadow-md hidden md:block'
             />
           </div>
 
