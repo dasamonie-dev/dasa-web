@@ -24,7 +24,7 @@ export const FeatureCard = ({
   return (
     <div
       id={id}
-      className='bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-shadow md:w-5xl scroll-mt-24'
+      className='bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-shadow lg:w-5xl scroll-mt-24'
     >
       <div className='flex flex-col md:flex-row md:items-center'>
         {/* Left side - Text Content */}

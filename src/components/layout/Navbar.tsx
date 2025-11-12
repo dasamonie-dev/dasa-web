@@ -62,7 +62,7 @@ export const Navbar = () => {
           </div>
 
           {/* App Store Buttons */}
-          <div className='hidden md:flex'>
+          <div className='hidden lg:flex'>
             <StoreButtons />
           </div>
 
