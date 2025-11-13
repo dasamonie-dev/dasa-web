@@ -4,6 +4,7 @@ interface ArticleCardProps {
   readTime: string;
   title: string;
   description: string;
+  onClick?: () => void;
 }
 
 export const ArticleCard = ({
@@ -12,6 +13,7 @@ export const ArticleCard = ({
   readTime,
   title,
   description,
+  onClick,
 }: ArticleCardProps) => {
   return (
     <div className='w-full max-w-[400px] bg-base rounded-lg overflow-hidden md:shadow-md md:hover:shadow-lg transition-shadow h-full'>
@@ -43,7 +45,10 @@ export const ArticleCard = ({
 
         {/* Button */}
         <div className='mt-3 flex items-center gap-4'>
-          <button className='inline-flex items-center rounded-full bg-accent px-4 py-2 text-white text-xs md:text-sm hover:bg-accent/80 cursor-pointer'>
+          <button
+            className='inline-flex items-center rounded-full bg-accent px-4 py-2 text-white text-xs md:text-sm hover:bg-accent/80 cursor-pointer'
+            onClick={onClick}
+          >
             Read article
           </button>
         </div>

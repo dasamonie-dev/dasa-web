@@ -17,6 +17,7 @@ import { BiometricServices } from './pages/products/BiometricServices';
 
 // Resources
 import { Blog } from './pages/resources/Blog';
+import { BlogArticleDetails } from './pages/resources/BlogArticleDetails';
 import { FAQs } from './pages/resources/FAQs';
 import { SecurityPrivacy } from './pages/resources/SecurityPrivacy';
 import { Downloads } from './pages/resources/Downloads';
@@ -53,6 +54,7 @@ function App() {
 
         {/* Resources */}
         <Route path='/resources/blog' element={<Blog />} />
+        <Route path='/resources/blog/:slug' element={<BlogArticleDetails />} />
         <Route path='/resources/faqs' element={<FAQs />} />
         <Route
           path='/resources/security-privacy'
