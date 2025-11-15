@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { FeatureCard } from '../ui/FeatureCard';
 import { useCallback } from 'react';
 
@@ -9,6 +12,20 @@ import savingsImage from '../../assets/homeSection2/growing-coin.svg';
 import cardsImage from '../../assets/homeSection2/debit-card.svg';
 
 export const Features = () => {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+      offset: 100, // trigger animation 100px before element is in view
+    });
+
+    // Refresh on update
+    AOS.refresh();
+  }, []);
+
+
   const features = [
     {
       title: 'Loans',
@@ -78,42 +95,44 @@ export const Features = () => {
       <div className='mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
         <div className='text-center mb-8 md:mb-10'>
-          <h2 className='font-extrabold text-accent text-3xl sm:text-4xl lg:text-5xl leading-tight'>
+          <h2
+            data-aos="fade-down"
+            data-aos-delay="100"
+            className='font-extrabold text-accent text-3xl sm:text-4xl lg:text-5xl leading-tight'
+          >
             The Simpler Way to Move,
             <br className='hidden sm:block' /> Pay, and Manage Money
           </h2>
-          <p className='mt-4 text-accent/70 sm:text-2xl max-w-3xl mx-auto'>
+          <p
+            data-aos="fade-up"
+            data-aos-delay="300"
+            className='mt-4 text-accent/70 sm:text-2xl max-w-3xl mx-auto'
+          >
             Enjoy a unified experience for all your financial needs powered by
             technology, built for you.
           </p>
         </div>
 
-        {/* Navigation Tabs (scroll triggers) */}
+        {/* Navigation Tabs */}
         <div className='lg:flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-8 mb-10 md:mb-12 text-sm sm:text-base hidden'>
-          {[
-            'loans',
-            'biometric-services',
-            'cards',
-            'currency-conversion',
-            'savings',
-            'pos',
-          ].map((item) => (
+          {['loans', 'biometric-services', 'cards', 'currency-conversion', 'savings', 'pos'].map((item, i) => (
             <button
               key={item}
               type='button'
               onClick={() => scrollTo(item)}
-              className={`px-0 bg-transparent text-accent/60 hover:text-accent transition-colors font-medium ${
-                item === 'currency-conversion'
-                  ? 'border-b-2 border-menu pb-1 text-accent'
-                  : ''
-              }`}
+              data-aos="fade-up"
+              data-aos-delay={i * 100 + 500} // stagger buttons slightly after header
+              className={`px-0 bg-transparent text-accent/60 hover:text-accent transition-colors font-medium ${item === 'currency-conversion'
+                ? 'border-b-2 border-menu pb-1 text-accent'
+                : ''
+                }`}
             >
               {item === 'biometric-services'
                 ? 'Biometric Services'
                 : item
-                    .split('-')
-                    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-                    .join(' ')}
+                  .split('-')
+                  .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+                  .join(' ')}
             </button>
           ))}
         </div>
@@ -122,10 +141,9 @@ export const Features = () => {
         <div className='space-y-6 lg:space-y-8 w-full flex flex-col items-center'>
           {features.map((feature, index) => (
             <FeatureCard
-              id={feature.title
-                .toLowerCase()
-                .replace(/\s+/g, '-')
-                .replace(/&/g, '')}
+              data-aos="fade-up"
+              data-aos-delay={index * 200 + 600} 
+              id={feature.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '')}
               key={index}
               title={feature.title}
               subtitle={feature.subtitle}
