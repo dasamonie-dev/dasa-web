@@ -18,7 +18,7 @@ export const SecurityPrivacy = () => {
 
         <article className='prose prose-sm md:prose md:prose-lg max-w-none text-accent/90'>
           <p>
-            <strong>Welcome to Dasamonie</strong> (<em>“we”, “our”, “us”</em>).
+            <strong>Welcome to Dasamonie Digital Service LTD</strong> (<em>“we”, “our”, “us”</em>).
             Your privacy is important to us. This Privacy Policy explains how we
             collect, use, disclose, and safeguard your information when you use
             our website, mobile application, and any related services

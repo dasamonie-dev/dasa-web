@@ -4,7 +4,7 @@ import { CTASection } from '../components/sections/CTASection';
 
 export const Contact = () => {
   return (
-    <div className='w-full min-h-screen bg-menu'>
+    <div className='w-full min-h-screen bg-menu overflow-x-clip'>
       <ContactHero />
       <div className='hidden lg:block'>
         <ContactMap />

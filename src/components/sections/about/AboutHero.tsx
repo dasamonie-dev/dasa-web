@@ -29,7 +29,7 @@ export const AboutHero = () => {
               data-aos='fade-down'
               data-aos-delay={100}
             >
-              <span>About Dasamonie</span>
+              <span>About Dasamonie Digital Service LTD.</span>
             </Badge>
 
             {/* Heading */}
@@ -51,7 +51,7 @@ export const AboutHero = () => {
             >
               We started as a small team of innovators determined to bridge the
               gap between people and modern financial solutions. Today,
-              Dasamonie stands as a trusted digital finance platform that
+              Dasamonie Digital Service Ltd stands as a trusted digital finance platform that
               empowers individuals and businesses to save, spend, borrow, and
               grow with confidence.
             </p>
