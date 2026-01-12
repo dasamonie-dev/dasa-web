@@ -1,29 +1,29 @@
-import { Badge } from '../../components/ui/Badge';
+import { Badge } from "../../components/ui/Badge";
 
 export const SecurityPrivacy = () => {
   return (
-    <div className='w-full min-h-screen bg-base font-nunito'>
-      <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-[900px] py-12 md:py-20'>
-        <div className='text-center mb-8'>
-          <Badge className='mx-auto mb-4' icon={<span className='hidden' />}>
+    <div className="w-full min-h-screen bg-base font-nunito">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-[900px] py-12 md:py-20">
+        <div className="text-center mb-8">
+          <Badge className="mx-auto mb-4" icon={<span className="hidden" />}>
             Privacy policy
           </Badge>
-          <h1 className='text-3xl md:text-4xl font-extrabold text-accent'>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-accent">
             Privacy Policy
           </h1>
-          <p className='mt-2 text-sm text-accent/70'>
+          <p className="mt-2 text-sm text-accent/70">
             Last updated: November 1, 2025
           </p>
         </div>
 
-        <article className='prose prose-sm md:prose md:prose-lg max-w-none text-accent/90'>
+        <article className="prose prose-sm md:prose md:prose-lg max-w-none text-accent/90">
           <p>
-            <strong>Welcome to Dasamonie Digital Service LTD</strong> (<em>“we”, “our”, “us”</em>).
-            Your privacy is important to us. This Privacy Policy explains how we
-            collect, use, disclose, and safeguard your information when you use
-            our website, mobile application, and any related services
-            (collectively, the <strong>“Services”</strong>). Please read this
-            policy carefully.
+            <strong>Welcome to Dasamonie Digital Service LTD</strong> (
+            <em>“we”, “our”, “us”</em>). Your privacy is important to us. This
+            Privacy Policy explains how we collect, use, disclose, and safeguard
+            your information when you use our website, mobile application, and
+            any related services (collectively, the <strong>“Services”</strong>
+            ). Please read this policy carefully.
           </p>
 
           <p>
@@ -111,7 +111,7 @@ export const SecurityPrivacy = () => {
               only)
             </li>
           </ul>
-          <p className='font-semibold'>
+          <p className="font-semibold">
             We do not sell or rent your personal information to third parties.
           </p>
 
@@ -178,8 +178,13 @@ export const SecurityPrivacy = () => {
             <li>
               🌐 <strong>www.dasamonie.com</strong>
             </li>
-            <li>
-              📍 <strong>[Insert Company Address, e.g., Lagos, Nigeria]</strong>
+            <li className="flex flex-col gap-2 w-full">
+              <span>
+                1.&nbsp;<strong>📍 4600 SUNSET CANYON NEW MEXICO USA.</strong>
+              </span>
+              <span>
+                2.&nbsp;<strong>📍 Block SB3, Flat 16, NNPC Area 11, Garki-Abuja</strong>
+              </span>
             </li>
           </ul>
         </article>
