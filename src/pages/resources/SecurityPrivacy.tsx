@@ -167,11 +167,13 @@ export const SecurityPrivacy = () => {
           </p>
 
           <h2>10. Contact Us</h2>
+
           <p>
             If you have any questions or concerns about this Privacy Policy or
             how we handle your data, please contact us at:
           </p>
-          <ul>
+
+          <ul className="space-y-1">
             <li>
               📧 <strong>support@dasamonie.com</strong>
             </li>
@@ -179,12 +181,14 @@ export const SecurityPrivacy = () => {
               🌐 <strong>www.dasamonie.com</strong>
             </li>
             <li className="flex flex-col gap-2 w-full">
-              <span>
-                1.&nbsp;<strong>📍 4600 SUNSET CANYON NEW MEXICO USA.</strong>
-              </span>
-              <span>
-                2.&nbsp;<strong>📍 Block SB3, Flat 16, NNPC Area 11, Garki-Abuja</strong>
-              </span>
+              <div className="flex flex-col">
+                <span>Headquarters:</span>
+                <span>📍 Block SB3, Flat 16, NNPC Area 11, Garki-Abuja.</span>
+              </div>
+
+              <div className="flex flex-col"></div>
+              <span>US Office:</span>
+              <span>📍 4600 SUNSET CANYON NEW MEXICO USA.</span>
             </li>
           </ul>
         </article>
