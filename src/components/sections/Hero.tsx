@@ -4,7 +4,7 @@ import 'aos/dist/aos.css';
 
 import { Badge } from '../ui/Badge';
 import { StoreButtons } from '../ui/StoreButtons';
-import { TrustedLogos } from '../ui/TrustedLogos';
+// import { TrustedLogos } from '../ui/TrustedLogos';
 
 // Assets
 import phone from '../../assets/heroBannerSection/herobannermobilephone.svg';
