@@ -179,9 +179,7 @@ export const SecurityPrivacy = () => {
               🌐 <strong>www.dasamonie.com</strong>
             </li>
             <li className="flex flex-col gap-2 w-full">
-              <span>
-                1.&nbsp;<strong>📍 4600 SUNSET CANYON NEW MEXICO USA.</strong>
-              </span>
+              
               <span>
                 2.&nbsp;<strong>📍 Block SB3, Flat 16, NNPC Area 11, Garki-Abuja</strong>
               </span>
