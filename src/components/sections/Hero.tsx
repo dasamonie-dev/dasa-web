@@ -92,9 +92,9 @@ export const Hero = () => {
         </div>
 
         {/* Logos */}
-        <div data-aos="fade-up" data-aos-delay="200">
+        {/* <div data-aos="fade-up" data-aos-delay="200">
           <TrustedLogos />
-        </div>
+        </div> */}
       </div>
     </section>
   );
