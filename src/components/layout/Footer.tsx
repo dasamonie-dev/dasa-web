@@ -108,10 +108,7 @@ export const Footer = () => {
             </div>
             {/* Address */}
             <div className="mt-8 space-y-1 text-white/70 lg:text-xl">
-              <p>
-                <span className="font-semibold text-white">Address:</span> 4600
-                SUNSET CANYON NEW MEXICO USA.
-              </p>
+              
               <p>Block SB3, Flat 16, NNPC Area 11, Garki-Abuja*</p>
             </div>
 
