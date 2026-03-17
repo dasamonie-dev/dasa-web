@@ -57,7 +57,7 @@ function App() {
         <Route path='/resources/blog/:slug' element={<BlogArticleDetails />} />
         <Route path='/resources/faqs' element={<FAQs />} />
         <Route
-          path='/resources/security-privacy'
+          path='/resources/privacy-policy'
           element={<SecurityPrivacy />}
         />
         <Route path='/resources/downloads' element={<Downloads />} />

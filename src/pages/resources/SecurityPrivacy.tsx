@@ -9,188 +9,186 @@ export const SecurityPrivacy = () => {
             Privacy policy
           </Badge>
           <h1 className="text-3xl md:text-4xl font-extrabold text-accent">
-            Privacy Policy
+            Dasamonie Digital Service Ltd
           </h1>
           <p className="mt-2 text-sm text-accent/70">
-            Last updated: November 1, 2025
+            Effective Date: November 1, 2025
           </p>
         </div>
 
         <article className="prose prose-sm md:prose md:prose-lg max-w-none text-accent/90">
           <p>
-            <strong>Welcome to Dasamonie Digital Service LTD</strong> (
-            <em>“we”, “our”, “us”</em>). Your privacy is important to us. This
-            Privacy Policy explains how we collect, use, disclose, and safeguard
-            your information when you use our website, mobile application, and
-            any related services (collectively, the <strong>“Services”</strong>
-            ). Please read this policy carefully.
+            Dasamonie Digital Service Ltd ("Dasamonie", "we", "our", or "us")
+            respects your privacy and is committed to protecting your personal
+            information.
           </p>
 
           <p>
-            By accessing or using Dasamonie, you agree to the terms of this
-            Privacy Policy. If you do not agree, please do not use our Services.
+            This Privacy Policy explains how we collect, use, disclose, and
+            safeguard your information when you use the Dasamonie mobile
+            application and related services. By using the Dasamonie app, you
+            agree to the practices described in this Privacy Policy.
           </p>
 
-          <h2>1. Information We Collect</h2>
-          <p>We may collect the following categories of information:</p>
+          <div className="mt-4">
+            <>
+              <h2 className="font-bold">1. Company Information</h2>
+              <p>
+                This application is operated by: Company Name: Dasamonie Digital
+                Service Ltd Registration Number: RC 9017159 Support Email:
+                support@dasamonie.com Legal Email: legal@dasamonie.com Dasamonie
+                provides digital financial services and business support
+                services through its platform.
+              </p>
+            </>
 
-          <h3>a. Personal Information</h3>
-          <ul>
-            <li>Full name</li>
-            <li>Email address</li>
-            <li>Phone number</li>
-            <li>Date of birth</li>
-            <li>Gender (optional)</li>
-            <li>Residential or billing address</li>
-          </ul>
+            <>
+              <h2 className="font-bold"> Information We Collect</h2>
+              <p>
+                To provide our services, we may collect the following types of
+                information.
+              </p>
+            </>
 
-          <h3>b. Financial Information</h3>
-          <ul>
-            <li>Bank account details</li>
-            <li>BVN (Bank Verification Number)</li>
-            <li>
-              Card information (processed securely through our payment partners)
-            </li>
-          </ul>
+            <>
+              <h2 className="font-bold">Personal Information</h2>
 
-          <h3>c. Transaction Data</h3>
-          <ul>
-            <li>Transaction history</li>
-            <li>Payment amounts</li>
-            <li>Service usage logs</li>
-          </ul>
+              <ul className="ml-4 list-decimal">
+                <li>Full name</li>
+                <li>Phone number</li>
+                <li>Email address</li>
+                <li>Date of birth</li>
+                <li>
+                  Government identification information such as BVN or NIN
+                </li>
+                <li>
+                  Business registration information (for company registration
+                  services)
+                </li>
+                <li>Account Information</li>
+                <li>Login credentials</li>
+                <li>Transaction history</li>
+                <li>Service usage records</li>
+                <li>Device Information</li>
+                <li>Device model</li>
+                <li>Operating system</li>
+                <li>Device identifiers</li>
+                <li>IP address</li>
+                <li>App usage data</li>
+                <li>Documents Provided by Users</li>
+              </ul>
+              <p>
+                Users may upload documents for services such as: Identity
+                verification Business registration
+              </p>
+            </>
+          </div>
 
-          <h3>d. Technical and Device Information</h3>
-          <ul>
-            <li>IP address</li>
-            <li>Device type and OS version</li>
-            <li>App usage statistics</li>
-            <li>Browser information</li>
-            <li>Cookies and similar tracking technologies</li>
-          </ul>
+          <>
+            <h2>Transaction verification</h2>
 
-          <h3>e. Identity Verification Data</h3>
-          <ul>
-            <li>Government-issued ID (e.g., national ID, passport)</li>
-            <li>
-              Selfie or live photo for KYC (Know Your Customer) verification
-            </li>
-          </ul>
+            <ul className="ml-4 list-decimal">
+              <li>
+                How We Use Your Information Dasamonie uses collected information
+                for the following purposes: Creating and managing user accounts
+                Identity verification and Know Your Customer (KYC) compliance
+                Processing financial transactions Providing loan services
+                Facilitating company registration services Fraud prevention and
+                security monitoring Customer support Regulatory compliance
+                Improving our services and platform performance
+              </li>
 
-          <h2>2. How We Use Your Information</h2>
-          <p>We use the information we collect to:</p>
-          <ul>
-            <li>Provide and manage your access to Dasamonie’s services</li>
-            <li>Process transactions and payments securely</li>
-            <li>Verify your identity and comply with KYC/AML regulations</li>
-            <li>
-              Communicate important updates, confirmations, and support messages
-            </li>
-            <li>Improve our products, services, and user experience</li>
-            <li>
-              Prevent fraud, unauthorized access, and other illegal activities
-            </li>
-            <li>Comply with legal obligations and regulatory requirements</li>
-          </ul>
+              <li>
+                BVN and NIN Services Dasamonie may assist users with retrieving
+                or printing information related to BVN or NIN through authorized
+                channels. Dasamonie: Does not generate or issue BVN numbers Does
+                not generate or issue NIN numbers Does not store biometric data
+                Dasamonie is not affiliated with the National Identity
+                Management Commission unless explicitly stated. Users are
+                responsible for providing accurate information when requesting
+                these services.
+              </li>
 
-          <h2>3. How We Share Your Information</h2>
-          <p>We may share your data with:</p>
-          <ul>
-            <li>
-              Financial institutions and payment processors for transaction
-              processing
-            </li>
-            <li>Identity verification providers for compliance purposes</li>
-            <li>Regulatory authorities as required by law</li>
-            <li>
-              Service providers and partners who help us operate and maintain
-              the platform
-            </li>
-            <li>
-              Analytics and marketing partners (anonymized or aggregated data
-              only)
-            </li>
-          </ul>
-          <p className="font-semibold">
-            We do not sell or rent your personal information to third parties.
-          </p>
+              <li>
+                Company Registration Services Dasamonie provides company
+                registration assistance services and may work with authorized
+                filing agents or government agencies such as the Corporate
+                Affairs Commission. Dasamonie is not the Corporate Affairs
+                Commission and does not represent the government.
+              </li>
 
-          <h2>4. Data Security</h2>
-          <p>
-            We use advanced security measures to protect your information,
-            including encryption, firewalls, and secure data storage systems.
-            While we strive to ensure the highest level of security, no system
-            is 100% foolproof. You are responsible for keeping your login
-            credentials confidential.
-          </p>
+              <li>
+                How We Share Your Information Your information may be shared
+                with trusted third parties when necessary to provide services.
+                These may include: Licensed financial institution partners
+                Payment processors Government agencies where required by law
+                Identity verification providers Company registration partners
+                Fraud prevention and compliance partners Dasamonie does not sell
+                or rent personal data to third parties.
+              </li>
 
-          <h2>5. Data Retention</h2>
-          <p>
-            We retain your information for as long as necessary to fulfill the
-            purposes described in this policy, comply with legal obligations,
-            and resolve disputes.
-          </p>
+              <li>
+                Data Security Dasamonie implements industry-standard security
+                measures to protect your information. Security measures include:
+                Secure encrypted connections Restricted system access Continuous
+                monitoring for security threats Secure data storage systems
+                However, no system is completely secure, and users are
+                responsible for protecting their account credentials.
+              </li>
 
-          <h2>6. Your Privacy Rights</h2>
-          <p>Depending on your location, you may have the right to:</p>
-          <ul>
-            <li>Access, correct, or delete your personal data</li>
-            <li>Withdraw consent at any time</li>
-            <li>Request a copy of your information</li>
-            <li>Opt out of marketing communications</li>
-          </ul>
-          <p>
-            To exercise these rights, please contact us at
-            <strong> support@dasamonie.com</strong>.
-          </p>
+              <li>
+                {" "}
+                Data Retention We retain personal information only as long as
+                necessary to: Provide services Comply with legal obligations
+                Prevent fraud Resolve disputes Certain records may be retained
+                as required by financial regulations.
+              </li>
 
-          <h2>7. Cookies and Tracking Technologies</h2>
-          <p>
-            We use cookies and similar technologies to improve functionality and
-            user experience. You can manage or disable cookies through your
-            browser settings, though some features may not function properly.
-          </p>
+              <li>
+                User Rights Users have the right to: Access their personal data
+                Request correction of inaccurate information Request account
+                deletion Withdraw consent for certain data processing Requests
+                can be made by contacting support.
+              </li>
 
-          <h2>8. Third-Party Links</h2>
-          <p>
-            Our Services may contain links to third-party websites. We are not
-            responsible for the privacy practices or content of those websites.
-            Please review their privacy policies before providing any personal
-            data.
-          </p>
+              <li>
+                {" "}
+                Account Deletion Users may delete their account through the
+                Delete Account option in the app settings. When an account
+                deletion request is submitted: Personal data will be removed
+                from active systems Some data may be retained where required by
+                law or regulatory compliance Account deletion may take up to 30
+                days to complete.
+              </li>
 
-          <h2>9. Updates to This Policy</h2>
-          <p>
-            We may update this Privacy Policy periodically to reflect changes in
-            our practices or legal obligations. Updates will be posted with a
-            revised <strong>“Last updated”</strong> date.
-          </p>
+              <li>
+                Children's Privacy Dasamonie services are not intended for
+                individuals under the age of 18. We do not knowingly collect
+                personal information from children. Dasamonie may update this
+                Privacy Policy periodically. Users will be notified of
+                significant updates through the application or email. Continued
+                use of the app after updates indicates acceptance of the revised
+                policy.
+              </li>
 
-          <h2>10. Contact Us</h2>
+              <li>
+                {" "}
+                Contact Us If you have questions about this Privacy Policy or
+                our data practices, please contact us
+              </li>
+            </ul>
 
-          <p>
-            If you have any questions or concerns about this Privacy Policy or
-            how we handle your data, please contact us at:
-          </p>
-
-          <ul className="space-y-1">
-            <li>
-              📧 <strong>support@dasamonie.com</strong>
-            </li>
-            <li>
-              🌐 <strong>www.dasamonie.com</strong>
-            </li>
-            <li className="flex flex-col gap-2 w-full">
-              <div className="flex flex-col">
-                <span>Headquarters:</span>
-                <span>📍 Block SB3, Flat 16, NNPC Area 11, Garki-Abuja.</span>
-              </div>
-
-              <div className="flex flex-col"></div>
-              <span>US Office:</span>
-              <span>📍 4600 SUNSET CANYON NEW MEXICO USA.</span>
-            </li>
-          </ul>
+            <div className="mt-4">
+              <h2 className="font-bold">
+                Dasamonie Digital Service Ltd Support
+              </h2>
+              <ul>
+                <li>Email: support@dasamonie.com</li>
+                <li>Legal Email: legal@dasamonie.com</li>
+                <li> Business Address: NNPC 63BLOCK GARKI ABUJA</li>
+              </ul>
+            </div>
+          </>
         </article>
       </div>
     </div>

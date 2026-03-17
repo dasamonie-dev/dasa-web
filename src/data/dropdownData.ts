@@ -73,7 +73,7 @@ export const resourcesDropdownItems: DropdownItem[] = [
     icon: IoShieldCheckmarkOutline,
     title: 'Security & Privacy Policy',
     description: 'Transparency and compliance info.',
-    to: '/resources/security-privacy',
+    to: '/resources/privacy-policy',
   },
   {
     icon: IoMdDownload,

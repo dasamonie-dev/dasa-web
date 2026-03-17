@@ -27,9 +27,9 @@ export const Footer = () => {
 
   const resourceLinks = [
     { to: "/resources/blog", label: "Blog" },
-    { to: "/resources/security-privacy", label: "Terms & Policies" },
+    { to: "/resources/privacy-policy", label: "Terms & Policies" },
     { to: "/resources/faqs", label: "FAQs" },
-    { to: "/resources/security-privacy", label: "Security" },
+    { to: "/resources/privacy-policy", label: "Security" },
   ];
 
   return (
