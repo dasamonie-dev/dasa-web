@@ -1,3 +1,4 @@
+//src/pages/About.tsx
 import AboutHero from '../components/sections/about/AboutHero';
 // import LeadershipTeam from '../components/sections/about/LeadershipTeam';
 import Mission from '../components/sections/about/Mission';
