@@ -65,7 +65,7 @@ function App() {
         <Route path='/resources/downloads' element={<Downloads />} />
         {/* 404 */}
         <Route path='*' element={<NotFound />} />
-        <Route path='/account-manager' element={<AccountManager />} />
+        <Route path='/field-agent' element={<AccountManager />} />
       </Routes>
       <Footer />
     </BrowserRouter>
