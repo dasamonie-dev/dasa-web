@@ -1,3 +1,4 @@
+//src/App.tsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
 import { ScrollToTop } from './components/layout/ScrollToTop';
@@ -22,6 +23,7 @@ import { FAQs } from './pages/resources/FAQs';
 import { SecurityPrivacy } from './pages/resources/SecurityPrivacy';
 import { Downloads } from './pages/resources/Downloads';
 import { NotFound } from './pages/NotFound';
+import AccountManager from './pages/AccountManager';
 
 function App() {
   return (
@@ -63,6 +65,7 @@ function App() {
         <Route path='/resources/downloads' element={<Downloads />} />
         {/* 404 */}
         <Route path='*' element={<NotFound />} />
+        <Route path='/account-manager' element={<AccountManager />} />
       </Routes>
       <Footer />
     </BrowserRouter>
