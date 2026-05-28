@@ -21,6 +21,7 @@ interface FormData {
   nextOfKinName: string;
   nextOfKinPhone: string;
   date: string;
+  indemnityAccepted: boolean;
 }
 
 type FormErrors = Partial<Record<keyof FormData | 'signature', string>>;
@@ -53,6 +54,7 @@ const INITIAL_FORM: FormData = {
   nextOfKinName: '',
   nextOfKinPhone: '',
   date: today,
+  indemnityAccepted: false,
 };
 
 const POSITIONS: Position[] = ['State Manager', 'Marketer', 'Field Agent'];
@@ -227,7 +229,7 @@ export const StaffRegistrationForm = () => {
 
     if (!form.fullName.trim())           newErrors.fullName = 'Full name is required';
     if (!form.position)                   newErrors.position = 'Please select a position';
-    if (!form.phoneNumber.trim())               newErrors.phoneNumber = 'Phone number is required';
+    if (!form.phoneNumber.trim())         newErrors.phoneNumber = 'Phone number is required';
     if (!form.email.trim())               newErrors.email = 'Email address is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
                                           newErrors.email = 'Enter a valid email address';
@@ -242,6 +244,7 @@ export const StaffRegistrationForm = () => {
                                           newErrors.accountNumber = 'Account number must be 10 digits';
     if (!form.nextOfKinName.trim())       newErrors.nextOfKinName = 'Next of kin name is required';
     if (!form.nextOfKinPhone.trim())      newErrors.nextOfKinPhone = 'Next of kin phone is required';
+    if (!form.indemnityAccepted)          newErrors.indemnityAccepted = 'You must accept the declaration to proceed';
     if (!hasSigRef.current)              newErrors.signature = 'Please provide your signature';
 
     setErrors(newErrors);
@@ -263,7 +266,7 @@ export const StaffRegistrationForm = () => {
         signature: canvasRef.current?.toDataURL('image/png') ?? '',
       };
 
-      console.log("body,", body)
+      console.log('body,', body);
 
       const res = await fetch(
         'https://dev-staging-apis.dasafoxx.com/auth/api/account-manager/staff/register',
@@ -510,6 +513,78 @@ export const StaffRegistrationForm = () => {
                 />
               </Field>
             </div>
+          </div>
+
+          {/* ── Indemnity & Declaration ── */}
+          <div className='px-6 sm:px-10 py-8 border-b border-[#eef2f7]'>
+            <SectionHeader delay={100}>Indemnity & Declaration</SectionHeader>
+
+            {/* Declaration text box */}
+            <div
+              className='bg-[#f5f8fb] border border-[#d0dce8] rounded-xl p-5 text-[0.85rem] text-[#374f6b] leading-relaxed space-y-3 mb-5'
+              data-aos='fade-up'
+              data-aos-delay={100}
+            >
+              <p>
+                I,{' '}
+                <span className='font-semibold text-[#0b1f3a]'>
+                  {form.fullName.trim() || '________________________'}
+                </span>
+                , hereby agree to represent Dasamonie professionally and ethically at all times.
+              </p>
+              <p>
+                I understand that I am solely responsible for any unlawful, fraudulent,
+                misleading, unauthorized, or criminal act committed by me during the course
+                of my engagement with Dasamonie. I agree to indemnify and hold Dasamonie,
+                its directors, officers, employees, and partners harmless from any claims,
+                losses, damages, liabilities, penalties, or legal actions arising from my
+                personal misconduct, negligence, breach of policy, or violation of any
+                applicable law.
+              </p>
+              <p>
+                I further confirm that I will comply with all Dasamonie policies, regulatory
+                requirements, and lawful instructions. Any violation may result in immediate
+                termination of my engagement and possible legal action.
+              </p>
+            </div>
+
+            {/* Acceptance checkbox */}
+            <label
+              className={`
+                flex items-start gap-3 cursor-pointer p-4 rounded-xl border-[1.5px]
+                transition-all duration-200 select-none
+                ${form.indemnityAccepted
+                  ? 'border-green-500 bg-green-50'
+                  : errors.indemnityAccepted
+                    ? 'border-red-400 bg-red-50/30'
+                    : 'border-[#d0dce8] hover:border-green-300 bg-[#fafcff]'
+                }
+              `}
+              data-aos='fade-up'
+              data-aos-delay={150}
+            >
+              <div className='mt-0.5 flex-shrink-0'>
+                <input
+                  type='checkbox'
+                  checked={form.indemnityAccepted}
+                  onChange={e => {
+                    setForm(prev => ({ ...prev, indemnityAccepted: e.target.checked }));
+                    if (errors.indemnityAccepted)
+                      setErrors(prev => ({ ...prev, indemnityAccepted: undefined }));
+                  }}
+                  className='accent-green-600 w-4 h-4'
+                />
+              </div>
+              <span className='text-[0.85rem] text-[#1a2b45] leading-relaxed'>
+                I have read, understood, and agree to the indemnity declaration above. I
+                confirm that the information provided in this form is accurate and complete.
+              </span>
+            </label>
+            {errors.indemnityAccepted && (
+              <span className='text-[0.76rem] text-red-500 mt-1.5 block animate-[fadeIn_.2s_ease]'>
+                {errors.indemnityAccepted}
+              </span>
+            )}
           </div>
 
           {/* ── Signature & Date ── */}
