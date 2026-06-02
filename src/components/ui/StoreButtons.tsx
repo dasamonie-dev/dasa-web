@@ -17,7 +17,7 @@ export const StoreButtons = ({
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <a
-        href='https://play.google.com'
+        href='https://play.google.com/store/search?q=dasamonie+finance&c=apps'
         target='_blank'
         rel='noopener noreferrer'
         className='transition-transform hover:scale-105'
@@ -29,7 +29,7 @@ export const StoreButtons = ({
         />
       </a>
       <a
-        href='https://apps.apple.com'
+        href='https://apps.apple.com/us/app/dasamonie/id6751965193'
         target='_blank'
         rel='noopener noreferrer'
         className='transition-transform hover:scale-105'
