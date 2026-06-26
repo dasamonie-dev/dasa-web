@@ -120,7 +120,7 @@ export const TransferMobileQRCode = () => {
         <p className="text-accent/40 text-xs text-center">
           Don't have the app?{" "}
           <a
-            href="https://play.google.com/store/apps/details?id=com.dasamonie.digital"
+            href="https://play.google.com/store/search?q=dasamonie+finance&c=apps"
             className="underline hover:text-accent/60"
             >
           
@@ -128,10 +128,10 @@ export const TransferMobileQRCode = () => {
           </a>
           {" · "}
           <a
-            href="https://apps.apple.com/app/dasamonie"
+            href="https://apps.apple.com/us/app/dasamonie/id6751965193"
             className="underline hover:text-accent/60"
           >
-            iOS
+            IOS
           </a>
         </p>
       </div>
