@@ -24,6 +24,7 @@ import { SecurityPrivacy } from './pages/resources/SecurityPrivacy';
 import { Downloads } from './pages/resources/Downloads';
 import { NotFound } from './pages/NotFound';
 import AccountManager from './pages/AccountManager';
+import TransferMobileQRCode from './pages/TransferMobileQRCode';
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
         {/* 404 */}
         <Route path='*' element={<NotFound />} />
         <Route path='/field-agent' element={<AccountManager />} />
+        <Route path='/transfer/mobile/qrcode' element={<TransferMobileQRCode />} />
       </Routes>
       <Footer />
     </BrowserRouter>
