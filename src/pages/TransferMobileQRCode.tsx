@@ -111,7 +111,7 @@ export const TransferMobileQRCode = () => {
         {/* Open in app */}
         <a
           href={deepLink}
-          className="w-full py-4 rounded-full font-bold text-base text-center bg-menu text-accent hover:bg-menu/80 transition-colors"
+          className="w-full py-4 rounded-full font-bold text-base text-center bg-menu text-black hover:bg-menu/80 transition-colors"
         >
           📱 Open in Dasamonie App
         </a>
@@ -119,9 +119,10 @@ export const TransferMobileQRCode = () => {
         {/* Store links */}
         <p className="text-accent/40 text-xs text-center">
           Don't have the app?{" "}
-          <a>
+          <a
             href="https://play.google.com/store/apps/details?id=com.dasamonie.digital"
             className="underline hover:text-accent/60"
+            >
           
             Android
           </a>
