@@ -7,6 +7,7 @@ import phone from '../assets/heroBannerSection/herobannermobilephone.svg'
 import checkmark from '../assets/heroBannerSection/checkmark.svg'
 import {
   ANDROID_STORE_URL,
+  ANDROID_MARKET_URL,
   IOS_STORE_URL,
   APP_REDIRECT_DELAY_MS,
   detectPlatform,
@@ -22,8 +23,15 @@ export const GetApp = () => {
 
   useEffect(() => {
     if (platform === 'other') return
+
+    if (platform === 'android') {
+      window.location.href = ANDROID_MARKET_URL
+    }
+
     const timer = setTimeout(() => {
-      window.location.replace(storeUrl)
+      if (!document.hidden) {
+        window.location.replace(storeUrl)
+      }
     }, APP_REDIRECT_DELAY_MS)
     return () => clearTimeout(timer)
   }, [platform, storeUrl])
