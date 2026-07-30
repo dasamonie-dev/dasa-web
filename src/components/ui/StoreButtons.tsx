@@ -1,3 +1,5 @@
+import { ANDROID_STORE_URL, IOS_STORE_URL } from '../../lib/appStore';
+
 interface StoreButtonsProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
@@ -17,7 +19,7 @@ export const StoreButtons = ({
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <a
-        href='https://play.google.com/store/search?q=dasamonie+finance&c=apps'
+        href={ANDROID_STORE_URL}
         target='_blank'
         rel='noopener noreferrer'
         className='transition-transform hover:scale-105'
@@ -29,7 +31,7 @@ export const StoreButtons = ({
         />
       </a>
       <a
-        href='https://apps.apple.com/us/app/dasamonie/id6751965193'
+        href={IOS_STORE_URL}
         target='_blank'
         rel='noopener noreferrer'
         className='transition-transform hover:scale-105'

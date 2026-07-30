@@ -25,6 +25,7 @@ import { Downloads } from './pages/resources/Downloads';
 import { NotFound } from './pages/NotFound';
 import AccountManager from './pages/AccountManager';
 import TransferMobileQRCode from './pages/TransferMobileQRCode';
+import GetApp from './pages/GetApp';
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
         <Route path='*' element={<NotFound />} />
         <Route path='/field-agent' element={<AccountManager />} />
         <Route path='/transfer/mobile/qrcode' element={<TransferMobileQRCode />} />
+        <Route path='/get-app' element={<GetApp />} />
       </Routes>
       <Footer />
     </BrowserRouter>
