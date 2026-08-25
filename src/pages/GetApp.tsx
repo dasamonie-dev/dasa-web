@@ -24,12 +24,14 @@ export const GetApp = () => {
     Boolean(referralCode),
   )
 
+  const [redirectSuppressed, setRedirectSuppressed] = useState(false)
+
   const storeUrl = platform === 'ios' ? IOS_STORE_URL : ANDROID_STORE_URL
   const storeName = platform === 'ios' ? 'the App Store' : 'Google Play'
   const StoreIcon = platform === 'ios' ? FaApple : FaGooglePlay
 
   useEffect(() => {
-    if (showReferralModal) return
+    if (showReferralModal || redirectSuppressed) return
     if (platform === 'other') return
 
     if (platform === 'android') {
@@ -42,7 +44,7 @@ export const GetApp = () => {
       }
     }, APP_REDIRECT_DELAY_MS)
     return () => clearTimeout(timer)
-  }, [platform, storeUrl, showReferralModal])
+  }, [platform, storeUrl, showReferralModal, redirectSuppressed])
 
   return (
     <>
@@ -50,6 +52,10 @@ export const GetApp = () => {
         <ReferralCodeModal
           code={referralCode}
           onContinue={() => setShowReferralModal(false)}
+          onDismiss={() => {
+            setRedirectSuppressed(true)
+            setShowReferralModal(false)
+          }}
         />
       )}
 

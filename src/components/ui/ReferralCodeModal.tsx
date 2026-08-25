@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { FiCopy, FiCheck } from 'react-icons/fi'
+import { FiCopy, FiCheck, FiX } from 'react-icons/fi'
 
 interface ReferralCodeModalProps {
   code: string
   onContinue: () => void
+  onDismiss: () => void
 }
 
 const AUTO_CONTINUE_DELAY_MS = 1100
@@ -11,6 +12,7 @@ const AUTO_CONTINUE_DELAY_MS = 1100
 export const ReferralCodeModal = ({
   code,
   onContinue,
+  onDismiss,
 }: ReferralCodeModalProps) => {
   const [copied, setCopied] = useState(false)
   const continueTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -38,9 +40,29 @@ export const ReferralCodeModal = ({
     continueTimer.current = setTimeout(onContinue, AUTO_CONTINUE_DELAY_MS)
   }
 
+  const handleContinueClick = () => {
+    if (continueTimer.current) clearTimeout(continueTimer.current)
+    onContinue()
+  }
+
   return (
-    <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 font-nunito'>
-      <div className='w-full max-w-sm bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center gap-5 text-center'>
+    <div
+      className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 font-nunito'
+      onClick={onDismiss}
+    >
+      <div
+        className='relative w-full max-w-sm bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center gap-5 text-center'
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type='button'
+          onClick={onDismiss}
+          aria-label='Dismiss'
+          className='absolute top-4 right-4 text-accent/40 hover:text-accent transition-colors'
+        >
+          <FiX className='w-5 h-5' />
+        </button>
+
         <span className='text-accent font-extrabold text-2xl tracking-tight'>
           Dasamonie
         </span>
@@ -78,10 +100,7 @@ export const ReferralCodeModal = ({
 
         <button
           type='button'
-          onClick={() => {
-            if (continueTimer.current) clearTimeout(continueTimer.current)
-            onContinue()
-          }}
+          onClick={handleContinueClick}
           className='text-accent/60 text-sm font-medium hover:text-accent transition-colors'
         >
           Continue to app store
