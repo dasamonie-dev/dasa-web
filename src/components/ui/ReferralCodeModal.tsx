@@ -1,29 +1,42 @@
-import { useState } from 'react';
-import { FiCopy, FiCheck } from 'react-icons/fi';
+import { useEffect, useRef, useState } from 'react'
+import { FiCopy, FiCheck } from 'react-icons/fi'
 
 interface ReferralCodeModalProps {
-  code: string;
-  onContinue: () => void;
+  code: string
+  onContinue: () => void
 }
 
-export const ReferralCodeModal = ({ code, onContinue }: ReferralCodeModalProps) => {
-  const [copied, setCopied] = useState(false);
+const AUTO_CONTINUE_DELAY_MS = 1100
+
+export const ReferralCodeModal = ({
+  code,
+  onContinue,
+}: ReferralCodeModalProps) => {
+  const [copied, setCopied] = useState(false)
+  const continueTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (continueTimer.current) clearTimeout(continueTimer.current)
+    }
+  }, [])
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(code);
-      setCopied(true);
+      await navigator.clipboard.writeText(code)
+      setCopied(true)
     } catch {
-      const el = document.createElement('input');
-      el.value = code;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      setCopied(true);
+      const el = document.createElement('input')
+      el.value = code
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
+      setCopied(true)
     }
-    setTimeout(() => setCopied(false), 2000);
-  };
+
+    continueTimer.current = setTimeout(onContinue, AUTO_CONTINUE_DELAY_MS)
+  }
 
   return (
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 font-nunito'>
@@ -65,12 +78,15 @@ export const ReferralCodeModal = ({ code, onContinue }: ReferralCodeModalProps) 
 
         <button
           type='button'
-          onClick={onContinue}
+          onClick={() => {
+            if (continueTimer.current) clearTimeout(continueTimer.current)
+            onContinue()
+          }}
           className='text-accent/60 text-sm font-medium hover:text-accent transition-colors'
         >
           Continue to app store
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
