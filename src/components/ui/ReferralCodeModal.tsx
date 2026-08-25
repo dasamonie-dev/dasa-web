@@ -51,7 +51,7 @@ export const ReferralCodeModal = ({ code, onContinue }: ReferralCodeModalProps) 
           onClick={handleCopy}
           className={`w-full py-4 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2 ${
             copied
-              ? 'bg-menu text-accent'
+              ? 'bg-green-600 text-white'
               : 'bg-accent text-white hover:bg-accent-hover'
           }`}
         >
