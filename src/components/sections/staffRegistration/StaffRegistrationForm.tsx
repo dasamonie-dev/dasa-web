@@ -1,35 +1,35 @@
 // src/components/sections/staffRegistration/StaffRegistrationForm.tsx
-import { useEffect, useRef, useState, useCallback } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { useEffect, useRef, useState, useCallback } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
-type Position = 'State Manager' | 'Marketer' | 'Field Agent';
+type Position = 'State Manager' | 'Marketer' | 'Field Agent'
 
 interface FormData {
-  fullName: string;
-  position: Position | '';
-  phoneNumber: string;
-  email: string;
-  state: string;
-  lga: string;
-  residentialAddress: string;
-  nin: string;
-  bankName: string;
-  accountNumber: string;
-  nextOfKinName: string;
-  nextOfKinPhone: string;
-  date: string;
-  indemnityAccepted: boolean;
+  fullName: string
+  position: Position | ''
+  phoneNumber: string
+  email: string
+  state: string
+  lga: string
+  residentialAddress: string
+  nin: string
+  bankName: string
+  accountNumber: string
+  nextOfKinName: string
+  nextOfKinPhone: string
+  date: string
+  indemnityAccepted: boolean
 }
 
-type FormErrors = Partial<Record<keyof FormData | 'signature', string>>;
+type FormErrors = Partial<Record<keyof FormData | 'signature', string>>
 
 interface ToastState {
-  message: string;
-  type: 'success' | 'error' | '';
-  visible: boolean;
+  message: string
+  type: 'success' | 'error' | ''
+  visible: boolean
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -38,7 +38,7 @@ const today = new Date().toLocaleDateString('en-NG', {
   day: '2-digit',
   month: 'long',
   year: 'numeric',
-});
+})
 
 const INITIAL_FORM: FormData = {
   fullName: '',
@@ -55,21 +55,27 @@ const INITIAL_FORM: FormData = {
   nextOfKinPhone: '',
   date: today,
   indemnityAccepted: false,
-};
+}
 
-const POSITIONS: Position[] = ['State Manager', 'Marketer', 'Field Agent'];
+const POSITIONS: Position[] = ['State Manager', 'Marketer', 'Field Agent']
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
 interface FieldProps {
-  label: string;
-  required?: boolean;
-  error?: string;
-  children: React.ReactNode;
-  className?: string;
+  label: string
+  required?: boolean
+  error?: string
+  children: React.ReactNode
+  className?: string
 }
 
-const Field = ({ label, required, error, children, className = '' }: FieldProps) => (
+const Field = ({
+  label,
+  required,
+  error,
+  children,
+  className = '',
+}: FieldProps) => (
   <div className={`flex flex-col gap-1.5 ${className}`}>
     <label className='text-[0.82rem] font-medium text-[#122548] tracking-wide'>
       {label}
@@ -82,10 +88,10 @@ const Field = ({ label, required, error, children, className = '' }: FieldProps)
       </span>
     )}
   </div>
-);
+)
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  hasError?: boolean;
+  hasError?: boolean
 }
 
 const Input = ({ hasError, className = '', ...props }: InputProps) => (
@@ -96,19 +102,20 @@ const Input = ({ hasError, className = '', ...props }: InputProps) => (
       transition-all duration-200
       focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-500/10
       placeholder:text-gray-400
-      ${hasError
-        ? 'border-red-400 focus:border-red-400 focus:ring-red-400/10'
-        : 'border-[#d0dce8]'
+      ${
+        hasError
+          ? 'border-red-400 focus:border-red-400 focus:ring-red-400/10'
+          : 'border-[#d0dce8]'
       }
       ${className}
     `}
     {...props}
   />
-);
+)
 
 interface SectionHeaderProps {
-  children: React.ReactNode;
-  delay?: number;
+  children: React.ReactNode
+  delay?: number
 }
 
 const SectionHeader = ({ children, delay = 0 }: SectionHeaderProps) => (
@@ -122,151 +129,178 @@ const SectionHeader = ({ children, delay = 0 }: SectionHeaderProps) => (
     </span>
     <div className='flex-1 h-px bg-gradient-to-r from-[#d0dce8] to-transparent' />
   </div>
-);
+)
 
 // ── Main Component ────────────────────────────────────────────────────────────
 
 export const StaffRegistrationForm = () => {
-  const [form, setForm] = useState<FormData>(INITIAL_FORM);
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [submitting, setSubmitting] = useState(false);
-  const [toast, setToast] = useState<ToastState>({ message: '', type: '', visible: false });
+  const [form, setForm] = useState<FormData>(INITIAL_FORM)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [submitting, setSubmitting] = useState(false)
+  const [toast, setToast] = useState<ToastState>({
+    message: '',
+    type: '',
+    visible: false,
+  })
 
   // Canvas refs
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const drawingRef = useRef(false);
-  const hasSigRef = useRef(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const drawingRef = useRef(false)
+  const hasSigRef = useRef(false)
 
   // AOS init
   useEffect(() => {
-    AOS.init({ duration: 800, once: true, easing: 'ease-in-out', offset: 60 });
-    AOS.refresh();
-  }, []);
+    AOS.init({ duration: 800, once: true, easing: 'ease-in-out', offset: 60 })
+    AOS.refresh()
+  }, [])
 
   // ── Toast ────────────────────────────────────────────────────────────────
-  const showToast = useCallback((message: string, type: 'success' | 'error') => {
-    setToast({ message, type, visible: true });
-    setTimeout(() => setToast(t => ({ ...t, visible: false })), 4000);
-  }, []);
+  const showToast = useCallback(
+    (message: string, type: 'success' | 'error') => {
+      setToast({ message, type, visible: true })
+      setTimeout(() => setToast((t) => ({ ...t, visible: false })), 4000)
+    },
+    [],
+  )
 
   // ── Canvas setup ─────────────────────────────────────────────────────────
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvas = canvasRef.current
+    if (!canvas) return
     const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = 140;
-    };
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas.parentElement!);
-    return () => ro.disconnect();
-  }, []);
+      canvas.width = canvas.offsetWidth
+      canvas.height = 140
+    }
+    resize()
+    const ro = new ResizeObserver(resize)
+    ro.observe(canvas.parentElement!)
+    return () => ro.disconnect()
+  }, [])
 
   const getCanvasPos = (
-    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+    e:
+      | React.MouseEvent<HTMLCanvasElement>
+      | React.TouchEvent<HTMLCanvasElement>,
   ) => {
-    const canvas = canvasRef.current!;
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
+    const canvas = canvasRef.current!
+    const rect = canvas.getBoundingClientRect()
+    const scaleX = canvas.width / rect.width
+    const scaleY = canvas.height / rect.height
     if ('touches' in e) {
       return {
         x: (e.touches[0].clientX - rect.left) * scaleX,
         y: (e.touches[0].clientY - rect.top) * scaleY,
-      };
+      }
     }
     return {
       x: (e.clientX - rect.left) * scaleX,
       y: (e.clientY - rect.top) * scaleY,
-    };
-  };
+    }
+  }
 
-  const startDraw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
-    drawingRef.current = true;
-    const ctx = canvasRef.current?.getContext('2d');
-    if (!ctx) return;
-    const { x, y } = getCanvasPos(e);
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-  };
+  const startDraw = (
+    e:
+      | React.MouseEvent<HTMLCanvasElement>
+      | React.TouchEvent<HTMLCanvasElement>,
+  ) => {
+    drawingRef.current = true
+    const ctx = canvasRef.current?.getContext('2d')
+    if (!ctx) return
+    const { x, y } = getCanvasPos(e)
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+  }
 
-  const draw = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
-    if (!drawingRef.current) return;
-    const ctx = canvasRef.current?.getContext('2d');
-    if (!ctx) return;
-    const { x, y } = getCanvasPos(e);
-    ctx.lineTo(x, y);
-    ctx.strokeStyle = '#0b1f3a';
-    ctx.lineWidth = 2;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.stroke();
-    hasSigRef.current = true;
-    if (errors.signature) setErrors(prev => ({ ...prev, signature: undefined }));
-  };
+  const draw = (
+    e:
+      | React.MouseEvent<HTMLCanvasElement>
+      | React.TouchEvent<HTMLCanvasElement>,
+  ) => {
+    if (!drawingRef.current) return
+    const ctx = canvasRef.current?.getContext('2d')
+    if (!ctx) return
+    const { x, y } = getCanvasPos(e)
+    ctx.lineTo(x, y)
+    ctx.strokeStyle = '#0b1f3a'
+    ctx.lineWidth = 2
+    ctx.lineCap = 'round'
+    ctx.lineJoin = 'round'
+    ctx.stroke()
+    hasSigRef.current = true
+    if (errors.signature)
+      setErrors((prev) => ({ ...prev, signature: undefined }))
+  }
 
-  const endDraw = () => { drawingRef.current = false; };
+  const endDraw = () => {
+    drawingRef.current = false
+  }
 
   const clearSig = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    canvas.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height);
-    hasSigRef.current = false;
-  };
+    const canvas = canvasRef.current
+    if (!canvas) return
+    canvas.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height)
+    hasSigRef.current = false
+  }
 
   // ── Field handlers ────────────────────────────────────────────────────────
-  const handleChange = (field: keyof FormData) => (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setForm(prev => ({ ...prev, [field]: e.target.value }));
-    if (errors[field]) setErrors(prev => ({ ...prev, [field]: undefined }));
-  };
+  const handleChange =
+    (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setForm((prev) => ({ ...prev, [field]: e.target.value }))
+      if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }))
+    }
 
   // ── Validation ────────────────────────────────────────────────────────────
   const validate = (): boolean => {
-    const newErrors: FormErrors = {};
+    const newErrors: FormErrors = {}
 
-    if (!form.fullName.trim())           newErrors.fullName = 'Full name is required';
-    if (!form.position)                   newErrors.position = 'Please select a position';
-    if (!form.phoneNumber.trim())         newErrors.phoneNumber = 'Phone number is required';
-    if (!form.email.trim())               newErrors.email = 'Email address is required';
+    if (!form.fullName.trim()) newErrors.fullName = 'Full name is required'
+    if (!form.position) newErrors.position = 'Please select a position'
+    if (!form.phoneNumber.trim())
+      newErrors.phoneNumber = 'Phone number is required'
+    if (!form.email.trim()) newErrors.email = 'Email address is required'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-                                          newErrors.email = 'Enter a valid email address';
-    if (!form.state.trim())               newErrors.state = 'State is required';
-    if (!form.lga.trim())                 newErrors.lga = 'LGA is required';
-    if (!form.residentialAddress.trim())  newErrors.residentialAddress = 'Residential address is required';
-    if (!form.nin.trim())                 newErrors.nin = 'NIN is required';
-    else if (!/^\d{11}$/.test(form.nin))  newErrors.nin = 'NIN must be exactly 11 digits';
-    if (!form.bankName.trim())            newErrors.bankName = 'Bank name is required';
-    if (!form.accountNumber.trim())       newErrors.accountNumber = 'Account number is required';
+      newErrors.email = 'Enter a valid email address'
+    if (!form.state.trim()) newErrors.state = 'State is required'
+    if (!form.lga.trim()) newErrors.lga = 'LGA is required'
+    if (!form.residentialAddress.trim())
+      newErrors.residentialAddress = 'Residential address is required'
+    if (!form.nin.trim()) newErrors.nin = 'NIN is required'
+    else if (!/^\d{11}$/.test(form.nin))
+      newErrors.nin = 'NIN must be exactly 11 digits'
+    if (!form.bankName.trim()) newErrors.bankName = 'Bank name is required'
+    if (!form.accountNumber.trim())
+      newErrors.accountNumber = 'Account number is required'
     else if (!/^\d{10}$/.test(form.accountNumber))
-                                          newErrors.accountNumber = 'Account number must be 10 digits';
-    if (!form.nextOfKinName.trim())       newErrors.nextOfKinName = 'Next of kin name is required';
-    if (!form.nextOfKinPhone.trim())      newErrors.nextOfKinPhone = 'Next of kin phone is required';
-    if (!form.indemnityAccepted)          newErrors.indemnityAccepted = 'You must accept the declaration to proceed';
-    if (!hasSigRef.current)              newErrors.signature = 'Please provide your signature';
+      newErrors.accountNumber = 'Account number must be 10 digits'
+    if (!form.nextOfKinName.trim())
+      newErrors.nextOfKinName = 'Next of kin name is required'
+    if (!form.nextOfKinPhone.trim())
+      newErrors.nextOfKinPhone = 'Next of kin phone is required'
+    if (!form.indemnityAccepted)
+      newErrors.indemnityAccepted = 'You must accept the declaration to proceed'
+    if (!hasSigRef.current)
+      newErrors.signature = 'Please provide your signature'
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   // ── Submit ────────────────────────────────────────────────────────────────
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!validate()) {
-      showToast('Please fix the highlighted fields.', 'error');
-      return;
+      showToast('Please fix the highlighted fields.', 'error')
+      return
     }
 
-    setSubmitting(true);
+    setSubmitting(true)
     try {
       const body = {
         ...form,
         signature: canvasRef.current?.toDataURL('image/png') ?? '',
-      };
+      }
 
-      console.log('body,', body);
+      console.log('body,', body)
 
       const res = await fetch(
         'https://dev-staging-apis.dasafoxx.com/auth/api/account-manager/staff/register',
@@ -274,33 +308,35 @@ export const StaffRegistrationForm = () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
-        }
-      );
+        },
+      )
 
       if (res.ok) {
-        showToast('Registration submitted successfully!', 'success');
-        setForm(INITIAL_FORM);
-        clearSig();
+        showToast('Registration submitted successfully!', 'success')
+        setForm(INITIAL_FORM)
+        clearSig()
       } else {
-        const errData = await res.json().catch(() => ({}));
+        const errData = await res.json().catch(() => ({}))
         showToast(
-          (errData as { message?: string }).message ?? 'Submission failed. Please try again.',
-          'error'
-        );
+          (errData as { message?: string }).message ??
+            'Submission failed. Please try again.',
+          'error',
+        )
       }
     } catch {
-      showToast('Network error. Check your connection and retry.', 'error');
+      showToast('Network error. Check your connection and retry.', 'error')
     } finally {
-      setSubmitting(false);
+      setSubmitting(false)
     }
-  };
+  }
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
     <section className='bg-[#eef6ee] font-nunito min-h-screen'>
       {/* Hero banner */}
       <div className='bg-footer text-white px-4 sm:px-6 lg:px-8 pt-10 pb-12 text-center relative overflow-hidden'>
-        <div className='absolute inset-0 pointer-events-none'
+        <div
+          className='absolute inset-0 pointer-events-none'
           style={{
             background:
               'radial-gradient(ellipse 60% 80% at 50% -10%, rgba(76,175,80,.18) 0%, transparent 70%)',
@@ -343,7 +379,7 @@ export const StaffRegistrationForm = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5'>
               <Field label='Full Name' required error={errors.fullName}>
                 <Input
-                  placeholder='e.g. Amaka Okonkwo'
+                  placeholder='e.g. John Dickson'
                   value={form.fullName}
                   onChange={handleChange('fullName')}
                   hasError={!!errors.fullName}
@@ -380,16 +416,21 @@ export const StaffRegistrationForm = () => {
           <div className='px-6 sm:px-10 py-8 border-b border-[#eef2f7]'>
             <SectionHeader delay={100}>Role & Position</SectionHeader>
             <Field label='Position' required error={errors.position}>
-              <div className='flex flex-wrap gap-3' data-aos='fade-up' data-aos-delay={150}>
-                {POSITIONS.map(pos => (
+              <div
+                className='flex flex-wrap gap-3'
+                data-aos='fade-up'
+                data-aos-delay={150}
+              >
+                {POSITIONS.map((pos) => (
                   <label
                     key={pos}
                     className={`
                       flex items-center gap-2.5 cursor-pointer px-4 py-2.5 rounded-[10px]
                       border-[1.5px] text-[0.88rem] transition-all duration-200 select-none
-                      ${form.position === pos
-                        ? 'border-green-500 bg-green-50 text-[#0b1f3a] font-medium'
-                        : 'border-[#d0dce8] text-[#1a2b45] hover:border-green-300'
+                      ${
+                        form.position === pos
+                          ? 'border-green-500 bg-green-50 text-[#0b1f3a] font-medium'
+                          : 'border-[#d0dce8] text-[#1a2b45] hover:border-green-300'
                       }
                     `}
                   >
@@ -399,8 +440,12 @@ export const StaffRegistrationForm = () => {
                       value={pos}
                       checked={form.position === pos}
                       onChange={() => {
-                        setForm(prev => ({ ...prev, position: pos }));
-                        if (errors.position) setErrors(prev => ({ ...prev, position: undefined }));
+                        setForm((prev) => ({ ...prev, position: pos }))
+                        if (errors.position)
+                          setErrors((prev) => ({
+                            ...prev,
+                            position: undefined,
+                          }))
                       }}
                       className='accent-green-600 w-4 h-4'
                     />
@@ -436,7 +481,11 @@ export const StaffRegistrationForm = () => {
                 />
               </Field>
             </div>
-            <Field label='Residential Address' required error={errors.residentialAddress}>
+            <Field
+              label='Residential Address'
+              required
+              error={errors.residentialAddress}
+            >
               <Input
                 placeholder='House number, street, city'
                 value={form.residentialAddress}
@@ -491,7 +540,11 @@ export const StaffRegistrationForm = () => {
           <div className='px-6 sm:px-10 py-8 border-b border-[#eef2f7]'>
             <SectionHeader delay={100}>Next of Kin</SectionHeader>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-5'>
-              <Field label='Next of Kin Name' required error={errors.nextOfKinName}>
+              <Field
+                label='Next of Kin Name'
+                required
+                error={errors.nextOfKinName}
+              >
                 <Input
                   placeholder='Full name'
                   value={form.nextOfKinName}
@@ -501,7 +554,11 @@ export const StaffRegistrationForm = () => {
                   data-aos-delay={100}
                 />
               </Field>
-              <Field label='Next of Kin Phone' required error={errors.nextOfKinPhone}>
+              <Field
+                label='Next of Kin Phone'
+                required
+                error={errors.nextOfKinPhone}
+              >
                 <Input
                   type='tel'
                   placeholder='e.g. 08012345678'
@@ -530,21 +587,24 @@ export const StaffRegistrationForm = () => {
                 <span className='font-semibold text-[#0b1f3a]'>
                   {form.fullName.trim() || '________________________'}
                 </span>
-                , hereby agree to represent Dasamonie professionally and ethically at all times.
+                , hereby agree to represent Dasamonie professionally and
+                ethically at all times.
               </p>
               <p>
-                I understand that I am solely responsible for any unlawful, fraudulent,
-                misleading, unauthorized, or criminal act committed by me during the course
-                of my engagement with Dasamonie. I agree to indemnify and hold Dasamonie,
-                its directors, officers, employees, and partners harmless from any claims,
-                losses, damages, liabilities, penalties, or legal actions arising from my
-                personal misconduct, negligence, breach of policy, or violation of any
-                applicable law.
+                I understand that I am solely responsible for any unlawful,
+                fraudulent, misleading, unauthorized, or criminal act committed
+                by me during the course of my engagement with Dasamonie. I agree
+                to indemnify and hold Dasamonie, its directors, officers,
+                employees, and partners harmless from any claims, losses,
+                damages, liabilities, penalties, or legal actions arising from
+                my personal misconduct, negligence, breach of policy, or
+                violation of any applicable law.
               </p>
               <p>
-                I further confirm that I will comply with all Dasamonie policies, regulatory
-                requirements, and lawful instructions. Any violation may result in immediate
-                termination of my engagement and possible legal action.
+                I further confirm that I will comply with all Dasamonie
+                policies, regulatory requirements, and lawful instructions. Any
+                violation may result in immediate termination of my engagement
+                and possible legal action.
               </p>
             </div>
 
@@ -553,11 +613,12 @@ export const StaffRegistrationForm = () => {
               className={`
                 flex items-start gap-3 cursor-pointer p-4 rounded-xl border-[1.5px]
                 transition-all duration-200 select-none
-                ${form.indemnityAccepted
-                  ? 'border-green-500 bg-green-50'
-                  : errors.indemnityAccepted
-                    ? 'border-red-400 bg-red-50/30'
-                    : 'border-[#d0dce8] hover:border-green-300 bg-[#fafcff]'
+                ${
+                  form.indemnityAccepted
+                    ? 'border-green-500 bg-green-50'
+                    : errors.indemnityAccepted
+                      ? 'border-red-400 bg-red-50/30'
+                      : 'border-[#d0dce8] hover:border-green-300 bg-[#fafcff]'
                 }
               `}
               data-aos='fade-up'
@@ -567,17 +628,24 @@ export const StaffRegistrationForm = () => {
                 <input
                   type='checkbox'
                   checked={form.indemnityAccepted}
-                  onChange={e => {
-                    setForm(prev => ({ ...prev, indemnityAccepted: e.target.checked }));
+                  onChange={(e) => {
+                    setForm((prev) => ({
+                      ...prev,
+                      indemnityAccepted: e.target.checked,
+                    }))
                     if (errors.indemnityAccepted)
-                      setErrors(prev => ({ ...prev, indemnityAccepted: undefined }));
+                      setErrors((prev) => ({
+                        ...prev,
+                        indemnityAccepted: undefined,
+                      }))
                   }}
                   className='accent-green-600 w-4 h-4'
                 />
               </div>
               <span className='text-[0.85rem] text-[#1a2b45] leading-relaxed'>
-                I have read, understood, and agree to the indemnity declaration above. I
-                confirm that the information provided in this form is accurate and complete.
+                I have read, understood, and agree to the indemnity declaration
+                above. I confirm that the information provided in this form is
+                accurate and complete.
               </span>
             </label>
             {errors.indemnityAccepted && (
@@ -609,8 +677,14 @@ export const StaffRegistrationForm = () => {
                     onMouseMove={draw}
                     onMouseUp={endDraw}
                     onMouseLeave={endDraw}
-                    onTouchStart={e => { e.preventDefault(); startDraw(e); }}
-                    onTouchMove={e => { e.preventDefault(); draw(e); }}
+                    onTouchStart={(e) => {
+                      e.preventDefault()
+                      startDraw(e)
+                    }}
+                    onTouchMove={(e) => {
+                      e.preventDefault()
+                      draw(e)
+                    }}
                     onTouchEnd={endDraw}
                   />
                   <div className='flex justify-end px-3 py-1.5 bg-[#f5f8fb] border-t border-[#d0dce8]'>
@@ -661,10 +735,19 @@ export const StaffRegistrationForm = () => {
                     viewBox='0 0 24 24'
                     fill='none'
                   >
-                    <circle className='opacity-25' cx='12' cy='12' r='10'
-                      stroke='currentColor' strokeWidth='4' />
-                    <path className='opacity-75' fill='currentColor'
-                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z' />
+                    <circle
+                      className='opacity-25'
+                      cx='12'
+                      cy='12'
+                      r='10'
+                      stroke='currentColor'
+                      strokeWidth='4'
+                    />
+                    <path
+                      className='opacity-75'
+                      fill='currentColor'
+                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z'
+                    />
                   </svg>
                   Submitting…
                 </>
@@ -694,7 +777,7 @@ export const StaffRegistrationForm = () => {
         {toast.message}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default StaffRegistrationForm;
+export default StaffRegistrationForm
